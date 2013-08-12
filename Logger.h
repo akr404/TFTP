@@ -39,20 +39,20 @@ class Logger
 	public:
         
         virtual ~Logger ();						//distructor 
-		static Logger& Instance();				//method to acces the private object of the Logger(single instance)
+	static Logger& Instance();				//method to acces the private object of the Logger(single instance)
         void WriteLog (std::ostream& ss);		//for writing log info into the file using synchronisation
-		void WriteError (std::ostream& ss);		//for writing errors info
-		void WriteWarning(std::ostream& ss);	//for writing the warnings
-		int GetSeqNo();							//for obtaining the sequence of the log information
+	void WriteError (std::ostream& ss);		//for writing errors info
+	void WriteWarning(std::ostream& ss);	//for writing the warnings
+	int GetSeqNo();							//for obtaining the sequence of the log information
 	  
     private:
 		
-		HANDLE				m_Mutex;			//to use syncronisation in logging .
+	HANDLE				m_Mutex;			//to use syncronisation in logging .
         char*				GetTimeStamp ();	//to get the timestamp of current execution
         ofstream			m_Stream;			//File stream will be used to write the log information
-		int					m_seq;				//sequence of the log information
+	int				m_seq;				//sequence of the log information
 
-		Logger();								//private constructor
+	Logger();								//private constructor
 
 		
 
