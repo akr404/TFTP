@@ -1,4 +1,3 @@
-
 #include "ThreadHandler.h"
 #include"TftpManager.h"
 #include "Logger.h"
@@ -243,7 +242,7 @@ TftpManager::Run()
   /*Start the threads for TCP server*/
 	Error_Barrier(thread.start());
 	
- /*Start the threads for TCP server*/	
+ /*Start the threads for UDP server*/	
 	Error_Barrier (thread2.start());
 
  /*Wait for both threads to finish*/
