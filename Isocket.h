@@ -1,28 +1,36 @@
-#ifndef __IPACKET__H
-#define __IPACKET__H
+#ifndef __ISOCKET__H
+#define __ISOCKET__H
 
-/*An Interface class for framing and deframing of packets.*/
-class Ipacket
+/* An interface class for supporting the functionalities of transport layer protocols. */
+
+class Isocket
 {
-public:
-
-  /*This method Encode the  packet.
-	*First parameter is opcode for the packet to be encoded.
-	*Second parameter is a INPUT string containing information to be encoded as a packet.
-	*third parameter is encoded packet.
-	*/
-	virtual int EncodePacket(int opcode,char* Input,char* output)=0; 
-
-
-
-	/*DecodePacket decode the  packets.
-	 *INPUT parameter Contains The  packet to be decoded.*/
-	 virtual  int DecodePacket(char* input)=0;
 	
-	 //returns opcode of the packet 
-	 virtual  int GetopCode()=0;
+public:
+		/*This method  creates the socket .*/
+		virtual int Create( ){return 0;}
 
-	 
+		/*This method binds the socket .*/
+		virtual int Bind(int port){return 0;}
+
+		/*This method listens for the connections .*/
+		virtual int Listen(){return 0;}
+
+		/*This method accepts the connections.*/
+		virtual int Accept(){return 0;}
+
+		/*This method connects the client to the server.
+		*takes server ip address and port as argument.*/
+		virtual int Connect(char* host,int port){return 0;}
+
+		/*This method closes the socket.*/
+		virtual int Close(){return 0;}
+
+		/*This method sends the data . Takes packet to be sent as arguments.*/
+		virtual int Send(char* packet){return 0;}
+
+		/*This method receives the data . returns the received packet as given parameter*/
+		virtual int Receive(char* packet){return 0;}
+	
 };
-
-#endif 
+#endif
